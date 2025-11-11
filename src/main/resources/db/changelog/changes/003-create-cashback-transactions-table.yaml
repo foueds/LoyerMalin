@@ -1,0 +1,62 @@
+databaseChangeLog:
+  - changeSet:
+      id: 003-create-cashback-transactions-table
+      author: loyermalin
+      changes:
+        - createTable:
+            tableName: cashback_transactions
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: contract_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: type
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: amount
+                  type: DECIMAL(10,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: transaction_date
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: VARCHAR(500)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: transaction_reference
+                  type: VARCHAR(255)
+
+        - createIndex:
+            indexName: idx_transaction_userid_status
+            tableName: cashback_transactions
+            columns:
+              - column:
+                  name: user_id
+              - column:
+                  name: status
