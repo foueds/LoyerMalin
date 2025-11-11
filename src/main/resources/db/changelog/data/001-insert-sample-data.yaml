@@ -1,0 +1,55 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-insert-sample-data
+      author: loyermalin
+      context: dev
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: user_id
+                  value: "test-user-001"
+              - column:
+                  name: email
+                  value: "tenant@test.com"
+              - column:
+                  name: password
+                  value: "$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iAt6Z5EH"  # password: test123
+              - column:
+                  name: first_name
+                  value: "Jean"
+              - column:
+                  name: last_name
+                  value: "Dupont"
+              - column:
+                  name: role
+                  value: "TENANT"
+              - column:
+                  name: is_verified
+                  valueBoolean: true
+
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: user_id
+                  value: "test-owner-001"
+              - column:
+                  name: email
+                  value: "owner@test.com"
+              - column:
+                  name: password
+                  value: "$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iAt6Z5EH"
+              - column:
+                  name: first_name
+                  value: "Marie"
+              - column:
+                  name: last_name
+                  value: "Martin"
+              - column:
+                  name: role
+                  value: "OWNER"
+              - column:
+                  name: is_verified
+                  valueBoolean: true
